@@ -26,4 +26,13 @@ namespace Lib
             }
         }
     }
+
+    public class LongGenerator
+    {
+        public static IEnumerable<long> Range(long start)
+        {
+            while (true)
+                yield return start++;
+        }
+    }
 }
