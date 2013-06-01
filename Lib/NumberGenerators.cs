@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 
 namespace Lib
 {
+    public class ProductGenerator
+    {
+        public static IEnumerable<int> GenerateProducts(int max, int start1 = 1)
+        {
+            for (int i = start1; i <= max; i++)
+                for (int j = i; j <= max; j++)
+                    yield return i * j;
+        }
+    }
+
     public class FibonacciGenerator
     {
         public static IEnumerable<uint> Generate()
