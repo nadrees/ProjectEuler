@@ -31,5 +31,37 @@ namespace Lib
             }
             while (++pointer < potentialPrimes.Length);
         }
+
+        public IEnumerable<long> GetPrimesBelowLongMaxValue()
+        {
+            var primes = GetPrimesBelowIntMaxValue().Select(i => (long)i).ToList();
+            foreach (var prime in primes)
+                yield return prime;
+
+            var num = primes.Last();
+            if (num % 2 == 0)
+                num += 1;
+
+            while (num <= maxLongPrime)
+            {
+                if (IsPrime(num, primes))
+                {
+                    yield return num;
+                    primes.Add(num);
+                }
+
+                num += 2;
+            }
+        }
+
+        private bool IsPrime(long num, List<long> primes)
+        {
+            foreach (var prime in primes)
+            {
+                if (num % prime == 0)
+                    return false;
+            }
+            return true;
+        }
     }
 }
