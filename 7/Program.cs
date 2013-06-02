@@ -16,7 +16,7 @@ namespace _7
     {
         static void Main(string[] args)
         {
-            var answer = new SievePrimeNumberGenerator().GetPrimesBelowLongMaxValue()
+            var answer = SievePrimeNumberGenerator.GetPrimesBelowLongMaxValue()
                 .Take(10001)
                 .ToList();
 

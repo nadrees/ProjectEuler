@@ -12,7 +12,7 @@ namespace Lib.Extensions
         {
             if (value >= 1)
             {
-                var primes = new SievePrimeNumberGenerator()
+                var primes = SievePrimeNumberGenerator
                     .GetPrimesBelowIntMaxValue()
                     .ToList();
 
