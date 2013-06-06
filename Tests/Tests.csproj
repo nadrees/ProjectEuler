@@ -51,6 +51,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CollatzTests.cs" />
     <Compile Include="ExtensionsTests\ArrayExtensionsTests.cs" />
     <Compile Include="ExtensionsTests\IntegerExtensionTests.cs" />
     <Compile Include="ExtensionsTests\LongExtensionTests.cs" />
