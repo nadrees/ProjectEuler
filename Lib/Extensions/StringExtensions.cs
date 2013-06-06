@@ -15,5 +15,10 @@ namespace Lib.Extensions
 
             return new String(s.ToLower().Reverse().ToArray()) == s.ToLower();
         }
+
+        public static int ParseDigit(this String s, int position)
+        {
+            return int.Parse(new String(new[] { s[position] }));
+        }
     }
 }
