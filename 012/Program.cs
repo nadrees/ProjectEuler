@@ -31,26 +31,22 @@ namespace _012
         {
             // for this problem, we don't need to know the actual divisors, only the number of them
             // if you factor a number in to its prime factors, you can calculate the number of divisors
-            // 
-            // if n = a^x * b^y * c^z where a, b, c are prime divisors and x, y, z are the number of times those divisors are needed, then
-            // num of divisors = (x + 1)(y + 1)(z + 1)
+            var triangleNumbers = TriangleNumberGenerator.Generate()
+                .Select(l => 
+                {
+                    var numberOfFactors = l.Factorize().Count();
+                    Console.WriteLine(String.Format("{0} {1}", l, numberOfFactors));
 
-            var triangleNumbers = TriangleNumberGenerator.Generate();
-            Console.WriteLine(String.Join(",", triangleNumbers.Take(7)));
+                    return new
+                    {
+                        l = l,
+                        numFactors = numberOfFactors
+                    };
+                })
+                .Where(l => l.numFactors > 500)
+                .FirstOrDefault();
 
-            // get list of prime factors
-            var primeFactors = 24.PrimeFactorize();
-            // count how often(a.k.a. x) each factor(a.k.a. a) appears in the list (a^x)
-            var primesCount = from p in primeFactors
-                              group p by p into g
-                              select new
-                              {
-                                  prime = g.Key,
-                                  count = g.Count()
-                              };
-            var numFactors = primesCount.Select(g => g.count + 1).Aggregate(1, (sum, next) => sum *= next);
-
-            Console.WriteLine(numFactors);
+            Console.WriteLine(triangleNumbers);
             Console.ReadKey();
         }
     }

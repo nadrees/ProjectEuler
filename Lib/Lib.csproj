@@ -44,8 +44,11 @@
     <Compile Include="Extensions\IntegerExtensions.cs" />
     <Compile Include="Extensions\LongExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="MiscMath.cs" />
+    <Compile Include="PrimeNumbers\CachedPrimeNumberGenerator.cs" />
+    <Compile Include="PrimeNumbers\IPrimeNumberGenerator.cs" />
     <Compile Include="ShapeNumberGenerators.cs" />
-    <Compile Include="SievePrimeNumberGenerator.cs" />
+    <Compile Include="PrimeNumbers\SievePrimeNumberGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NumberGenerators.cs" />
   </ItemGroup>

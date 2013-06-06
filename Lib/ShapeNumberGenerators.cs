@@ -8,11 +8,11 @@ namespace Lib
 {
     public class TriangleNumberGenerator
     {
-        public static IEnumerable<ulong> Generate()
+        public static IEnumerable<long> Generate()
         {
-            ulong lastValue = 0;
+            long lastValue = 0;
 
-            for (ulong i = 1; i < ulong.MaxValue; i++)
+            for (long i = 1; i < long.MaxValue; i++)
             {
                 lastValue += i;
                 yield return lastValue;

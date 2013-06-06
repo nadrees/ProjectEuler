@@ -1,4 +1,4 @@
-﻿using Lib;
+﻿using Lib.PrimeNumbers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace _7
     {
         static void Main(string[] args)
         {
-            var answer = SievePrimeNumberGenerator.GetPrimesBelowLongMaxValue()
+            var answer = new SievePrimeNumberGenerator().GetPrimesBelowLongMaxValue()
                 .Take(10001)
                 .ToList();
 

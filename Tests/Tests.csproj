@@ -55,8 +55,12 @@
     <Compile Include="ExtensionsTests\IntegerExtensionTests.cs" />
     <Compile Include="ExtensionsTests\LongExtensionTests.cs" />
     <Compile Include="ExtensionsTests\StringExtensionsTests.cs" />
+    <Compile Include="MiscMathTests.cs" />
+    <Compile Include="PrimeNumbers\CachedPrimeNumberGeneratorTests.cs" />
+    <Compile Include="PrimeNumbers\IPrimeNumberGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShapeNumberGeneratorTests.cs" />
+    <Compile Include="PrimeNumbers\SievePrimeNumberGeneratorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\grid.txt">

@@ -22,5 +22,26 @@ namespace Tests.ExtensionsTests
             for (int i = 0; i < expected.Length; i++)
                 Assert.AreEqual(expected[i], primeFactors[i]);
         }
+
+        [TestMethod]
+        public void TestPrimeFactorizeOf1()
+        {
+            var primeFactors = 1L.PrimeFactorize();
+            var expected = new int[0];
+
+            Assert.AreEqual(primeFactors.ToArray().Length, expected.Length);
+        }
+
+        [TestMethod]
+        public void TestFactorize()
+        {
+            var factors = 28L.Factorize().OrderBy(l => l).ToArray();
+            var expected = new[] { 1, 2, 4, 7, 14, 28 };
+
+            Assert.AreEqual(expected.Length, factors.Length);
+
+            for (int i = 0; i < expected.Length; i++)
+                Assert.AreEqual(expected[i], factors[i]);
+        }
     }
 }
