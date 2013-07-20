@@ -13,5 +13,14 @@ namespace Tests.ExtensionsTests
             Assert.IsTrue("9009".IsPalindrome());
             Assert.IsFalse("90".IsPalindrome());
         }
+
+        [TestMethod]
+        public void TestIsPandigital()
+        {
+            Assert.IsTrue("123456789".IsPandigital());
+            Assert.IsTrue("987612345".IsPandigital());
+            Assert.IsFalse("012345679".IsPandigital());
+            Assert.IsFalse("113456789".IsPandigital());
+        }
     }
 }
