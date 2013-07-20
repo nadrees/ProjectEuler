@@ -60,6 +60,7 @@
     <Compile Include="PrimeNumbers\CachedPrimeNumberGeneratorTests.cs" />
     <Compile Include="PrimeNumbers\IPrimeNumberGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RightDownLatticeTests.cs" />
     <Compile Include="ShapeNumberGeneratorTests.cs" />
     <Compile Include="PrimeNumbers\SievePrimeNumberGeneratorTests.cs" />
   </ItemGroup>
