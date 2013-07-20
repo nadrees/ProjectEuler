@@ -19,5 +19,17 @@ namespace Tests
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void TestCircularPrimesBelow()
+        {
+            var expected = new[] { 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, 97 };
+            var actual = MiscMath.CircularPrimesBelow(100);
+
+            Assert.AreEqual(expected.Length, actual.Length);
+
+            foreach (var a in actual)
+                Assert.IsTrue(expected.Contains(a));
+        }
     }
 }

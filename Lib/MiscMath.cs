@@ -1,4 +1,5 @@
 ﻿using Lib.Extensions;
+using Lib.PrimeNumbers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,43 @@ namespace Lib
             var numFactors = primesCount.Aggregate(1, (sum, next) => sum *= next);
 
             return numFactors;
+        }
+
+        public static int[] CircularPrimesBelow(int l)
+        {
+            HashSet<int> circularPrimes = new HashSet<int>();
+
+            var primes = new SievePrimeNumberGenerator()
+                .GetPrimesBelowIntMaxValue()
+                .TakeWhile(p => p < l)
+                .ToList();
+
+            foreach (var prime in primes)
+            {
+                if (!circularPrimes.Contains(prime))
+                {
+                    var rotations = prime.GetAllRotations();
+
+                    if (AllRotationsArePrime(primes, rotations))
+                    {
+                        foreach (var rotation in rotations)
+                            circularPrimes.Add(rotation);
+                    }
+                }
+            }
+
+            return circularPrimes.ToArray();
+        }
+
+        private static bool AllRotationsArePrime(List<int> primes, int[] rotations)
+        {
+            foreach (var rotation in rotations)
+            {
+                if (!primes.Contains(rotation))
+                    return false;
+            }
+
+            return true;
         }
     }
 }

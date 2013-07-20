@@ -22,5 +22,11 @@ namespace Tests.ExtensionsTests
             Assert.IsFalse("012345679".IsPandigital());
             Assert.IsFalse("113456789".IsPandigital());
         }
+
+        [TestMethod]
+        public void TestRotateLeft()
+        {
+            Assert.AreEqual("971", "197".RotateLeft());
+        }
     }
 }

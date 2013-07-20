@@ -30,6 +30,22 @@ namespace Lib.Extensions
             return sum * sum;
         }
 
+        public static int[] GetAllRotations(this int n)
+        {
+            var str = n.ToString();
+            if (str.Length == 1)
+                return new int[] { n };
+
+            int[] rotations = new int[str.Length];
+            for (int i = 0; i < str.Length; i++)
+            {
+                str = str.RotateLeft();
+                rotations[i] = int.Parse(str);
+            }
+
+            return rotations;
+        }
+
         public static String Spell(this int n)
         {
             if (n > 9999)

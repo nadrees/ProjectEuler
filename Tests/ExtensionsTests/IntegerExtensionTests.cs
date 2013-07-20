@@ -37,57 +37,27 @@ namespace Tests.ExtensionsTests
         }
 
         [TestMethod]
-        public void TestSpell_342()
+        public void TestSpell()
         {
-            var expected = "three hundred and forty-two";
-
-            var actual = 342.Spell();
-
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual("three hundred and forty-two", 342.Spell());
+            Assert.AreEqual("one hundred and fifteen", 115.Spell());
+            Assert.AreEqual("one thousand", 1000.Spell());
+            Assert.AreEqual("five hundred", 500.Spell());
+            Assert.AreEqual("forty", 40.Spell());
+            Assert.AreEqual("eighteen", 18.Spell());
         }
 
         [TestMethod]
-        public void TestSpell_115()
+        public void TestGetAllRotations()
         {
-            var expected = "one hundred and fifteen";
+            var expected = new[] { 197, 719, 971 };
 
-            var actual = 115.Spell();
+            var actual = 197.GetAllRotations();
 
-            Assert.AreEqual(expected, actual);
-        }
+            Assert.AreEqual(expected.Length, actual.Length);
 
-        [TestMethod]
-        public void TestSpell_1000()
-        {
-            var expected = "one thousand";
-            var actual = 1000.Spell();
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void TestSpell_500()
-        {
-            var expected = "five hundred";
-            var actual = 500.Spell();
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void TestSpell_40()
-        {
-            var expected = "forty";
-            var actual = 40.Spell();
-
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void TestSpell_18()
-        {
-            var expected = "eighteen";
-            var actual = 18.Spell();
-
-            Assert.AreEqual(expected, actual);
+            for (int i = 0; i < actual.Length; i++)
+                Assert.IsTrue(expected.Contains(actual[i]));
         }
     }
 }

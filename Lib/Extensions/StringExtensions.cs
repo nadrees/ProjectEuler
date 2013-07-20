@@ -21,6 +21,17 @@ namespace Lib.Extensions
             return int.Parse(new String(new[] { s[position] }));
         }
 
+        public static String RotateLeft(this String s)
+        {
+            if (s == null)
+                return null;
+            else if (s.Length == 1)
+                return s;
+
+            var firstChar = s.Substring(0, 1);
+            return s.Substring(1) + firstChar;
+        }
+
         public static bool IsPandigital(this String s)
         {
             if (s == null)
