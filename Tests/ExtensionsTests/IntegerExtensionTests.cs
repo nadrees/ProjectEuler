@@ -39,7 +39,7 @@ namespace Tests.ExtensionsTests
         [TestMethod]
         public void TestSpell_342()
         {
-            var expected = "three hundred and fourty-two";
+            var expected = "three hundred and forty-two";
 
             var actual = 342.Spell();
 
@@ -69,6 +69,24 @@ namespace Tests.ExtensionsTests
         {
             var expected = "five hundred";
             var actual = 500.Spell();
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestSpell_40()
+        {
+            var expected = "forty";
+            var actual = 40.Spell();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestSpell_18()
+        {
+            var expected = "eighteen";
+            var actual = 18.Spell();
+
             Assert.AreEqual(expected, actual);
         }
     }

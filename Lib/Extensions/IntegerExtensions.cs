@@ -64,7 +64,7 @@ namespace Lib.Extensions
                     case 3:
                         return String.Format("thirty-{0}", Spell(remainder)).TrimEnd(' ', '-');
                     case 4:
-                        return String.Format("fourty-{0}", Spell(remainder)).TrimEnd(' ', '-');
+                        return String.Format("forty-{0}", Spell(remainder)).TrimEnd(' ', '-');
                     case 5:
                         return String.Format("fifty-{0}", Spell(remainder)).TrimEnd(' ', '-');
                     case 6:
@@ -81,9 +81,14 @@ namespace Lib.Extensions
             }
             else if (n >= 16)
             {
-                int remainder = n % 10;
+                if (n == 18)
+                    return "eighteen";
+                else
+                {
+                    int remainder = n % 10;
 
-                return String.Format("{0}teen", Spell(remainder));
+                    return String.Format("{0}teen", Spell(remainder));
+                }
             }
             else
             {
