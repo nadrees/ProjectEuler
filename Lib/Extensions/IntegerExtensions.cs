@@ -29,5 +29,100 @@ namespace Lib.Extensions
                 .Aggregate(new BigInteger(0), (s, bi) => s += bi);
             return sum * sum;
         }
+
+        public static String Spell(this int n)
+        {
+            if (n > 9999)
+                throw new ArgumentOutOfRangeException();
+
+            if (n >= 1000)
+            {
+                int thousandPart = n / 1000;
+                int remainder = n % 1000;
+
+                return String.Format("{0} thousand {1}", Spell(thousandPart), Spell(remainder)).TrimEnd(' ');
+            }
+            else if (n >= 100)
+            {
+                int hundredPart = n / 100;
+                int remainder = n % 100;
+
+                if (remainder == 0)
+                    return String.Format("{0} hundred", Spell(hundredPart));
+                else
+                    return String.Format("{0} hundred and {1}", Spell(hundredPart), Spell(remainder));
+            }
+            else if (n >= 20)
+            {
+                int tensPart = n / 10;
+                int remainder = n % 10;
+
+                switch (tensPart)
+                {
+                    case 2:
+                        return String.Format("twenty-{0}", Spell(remainder)).TrimEnd(' ', '-');
+                    case 3:
+                        return String.Format("thirty-{0}", Spell(remainder)).TrimEnd(' ', '-');
+                    case 4:
+                        return String.Format("fourty-{0}", Spell(remainder)).TrimEnd(' ', '-');
+                    case 5:
+                        return String.Format("fifty-{0}", Spell(remainder)).TrimEnd(' ', '-');
+                    case 6:
+                        return String.Format("sixty-{0}", Spell(remainder)).TrimEnd(' ', '-');
+                    case 7:
+                        return String.Format("seventy-{0}", Spell(remainder)).TrimEnd(' ', '-');
+                    case 8:
+                        return String.Format("eighty-{0}", Spell(remainder)).TrimEnd(' ', '-');
+                    case 9:
+                        return String.Format("ninety-{0}", Spell(remainder)).TrimEnd(' ', '-');
+                    default:
+                        throw new ArgumentException(n.ToString());
+                }
+            }
+            else if (n >= 16)
+            {
+                int remainder = n % 10;
+
+                return String.Format("{0}teen", Spell(remainder));
+            }
+            else
+            {
+                switch (n)
+                {
+                    case 1:
+                        return "one";
+                    case 2:
+                        return "two";
+                    case 3:
+                        return "three";
+                    case 4:
+                        return "four";
+                    case 5:
+                        return "five";
+                    case 6:
+                        return "six";
+                    case 7:
+                        return "seven";
+                    case 8:
+                        return "eight";
+                    case 9:
+                        return "nine";
+                    case 10:
+                        return "ten";
+                    case 11:
+                        return "eleven";
+                    case 12:
+                        return "twelve";
+                    case 13:
+                        return "thirteen";
+                    case 14:
+                        return "fourteen";
+                    case 15:
+                        return "fifteen";
+                    default:
+                        return "";
+                }
+            }
+        }
     }
 }
