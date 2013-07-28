@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,17 +19,17 @@ namespace Lib
 
     public class FibonacciGenerator
     {
-        public static IEnumerable<uint> Generate()
+        public static IEnumerable<BigInteger> Generate(bool repeatingOnes = false)
         {
-            uint i1 = 1;
-            uint i2 = 2;
+            BigInteger i1 = new BigInteger(1);
+            BigInteger i2 = (repeatingOnes ? new BigInteger(1) : new BigInteger(2));
 
             yield return i1;
             yield return i2;
 
             while (true)
             {
-                uint next = i1 + i2;
+                var next = i1 + i2;
                 yield return next;
 
                 i1 = i2;
