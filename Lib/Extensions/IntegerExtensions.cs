@@ -9,6 +9,15 @@ namespace Lib.Extensions
 {
     public static class IntegerExtensions
     {
+        public static BigInteger ToPower(this int n, int power)
+        {
+            var result = new BigInteger(n);
+            for (int i = 2; i <= power; i++)
+                result *= n;
+
+            return result;
+        }
+
         public static IEnumerable<int> GetAllDivisors(this int n)
         {
             return from a in Enumerable.Range(1, n / 2)
