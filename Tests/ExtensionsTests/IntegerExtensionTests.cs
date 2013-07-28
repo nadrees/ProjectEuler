@@ -59,5 +59,17 @@ namespace Tests.ExtensionsTests
             for (int i = 0; i < actual.Length; i++)
                 Assert.IsTrue(expected.Contains(actual[i]));
         }
+
+        [TestMethod]
+        public void TestGetAllDivisors()
+        {
+            var expected = new[] { 1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110 };
+            var actual = 220.GetAllDivisors().OrderBy(d => d).ToArray();
+
+            Assert.AreEqual(expected.Length, actual.Length);
+
+            for (int i = 0; i < expected.Length; i++)
+                Assert.AreEqual(expected[i], actual[i]);
+        }
     }
 }

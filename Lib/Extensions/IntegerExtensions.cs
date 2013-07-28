@@ -9,6 +9,13 @@ namespace Lib.Extensions
 {
     public static class IntegerExtensions
     {
+        public static IEnumerable<int> GetAllDivisors(this int n)
+        {
+            return from a in Enumerable.Range(1, n / 2)
+                   where n % a == 0
+                   select a;
+        }
+
         public static IEnumerable<int> PrimeFactorize(this int value)
         {
             return ((long)value).PrimeFactorize().Select(i => (int)i);
