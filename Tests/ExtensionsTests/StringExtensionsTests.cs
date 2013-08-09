@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Lib.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -27,6 +28,17 @@ namespace Tests.ExtensionsTests
         public void TestRotateLeft()
         {
             Assert.AreEqual("971", "197".RotateLeft());
+        }
+
+        [TestMethod]
+        public void TestGeneratePermutations()
+        {
+            var expected = new[] { "012", "021", "102", "120", "201", "210" };
+            var actual = "012".GeneratePermutations().ToList();
+
+            Assert.AreEqual(expected.Length, actual.Count);
+            foreach (var permutation in actual)
+                Assert.IsTrue(expected.Contains(permutation));
         }
     }
 }

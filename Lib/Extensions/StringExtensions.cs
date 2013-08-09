@@ -8,6 +8,22 @@ namespace Lib.Extensions
 {
     public static class StringExtensions
     {
+        public static IEnumerable<String> GeneratePermutations(this String s)
+        {
+            if (s == null || s.Length == 0)
+                yield return String.Empty;
+            else
+            {
+                for (int i = 0; i < s.Length; i++)
+                {
+                    var prefix = Convert.ToString(s[i]);
+                    var allSubPermutations = GeneratePermutations(s.Substring(0, i) + s.Substring(i + 1));
+                    foreach (var subPermutation in allSubPermutations)
+                        yield return prefix + subPermutation;
+                }
+            }
+        }
+
         public static bool IsPalindrome(this String s)
         {
             if (String.IsNullOrWhiteSpace(s))
