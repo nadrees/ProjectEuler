@@ -16,6 +16,15 @@ namespace Lib.Extensions
 
     public static class IntegerExtensions
     {
+        public static BigInteger Factorial(this int n)
+        {
+            var start = new BigInteger(1);
+            for (int i = 1; i <= n; i++)
+                start *= i;
+
+            return start;
+        }
+
         private static readonly Dictionary<int, NumberAbundancy> abundancyCache = new Dictionary<int, NumberAbundancy>();
         public static NumberAbundancy GetAbundancy(this int n)
         {

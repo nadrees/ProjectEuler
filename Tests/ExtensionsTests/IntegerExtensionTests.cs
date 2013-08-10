@@ -87,5 +87,17 @@ namespace Tests.ExtensionsTests
             actual = 2.GetAbundancy();
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void TestFactorial()
+        {
+            var expected = "1";
+            var actual = 0.Factorial().ToString();
+            Assert.AreEqual(expected, actual);
+
+            expected = "120";
+            actual = 5.Factorial().ToString();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
