@@ -99,5 +99,17 @@ namespace Tests.ExtensionsTests
             actual = 5.Factorial().ToString();
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void TestToBase()
+        {
+            var expected = "111011";
+            var actual = 59.ToBase(2);
+            Assert.AreEqual(expected, actual);
+
+            expected = "214";
+            actual = 59.ToBase(5);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

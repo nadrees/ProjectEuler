@@ -16,6 +16,34 @@ namespace Lib.Extensions
 
     public static class IntegerExtensions
     {
+
+        public static String ToBase(this int n, int targetBase)
+        {
+            String result = String.Empty;
+
+            var stack = new Stack<BigInteger>();
+            
+            int num = 1;
+            BigInteger power = BigInteger.One;
+            do
+            {
+                stack.Push(power);
+                power = targetBase.ToPower(num++);
+            }
+            while (power < n);
+
+            var workingNum = new BigInteger(n);
+            while (stack.Count > 0)
+            {
+                power = stack.Pop();
+                var count = workingNum / power;
+                result += count;
+                workingNum -= count * power;
+            }
+
+            return result;
+        }
+
         public static BigInteger Factorial(this int n)
         {
             var start = new BigInteger(1);
