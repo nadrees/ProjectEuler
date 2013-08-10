@@ -7,8 +7,36 @@ using System.Threading.Tasks;
 
 namespace Lib.Extensions
 {
+    public enum NumberAbundancy
+    {
+        Abundant,
+        Perfect,
+        Deficient
+    }
+
     public static class IntegerExtensions
     {
+        private static readonly Dictionary<int, NumberAbundancy> abundancyCache = new Dictionary<int, NumberAbundancy>();
+        public static NumberAbundancy GetAbundancy(this int n)
+        {
+            if (!abundancyCache.ContainsKey(n))
+            {
+                NumberAbundancy value;
+
+                var divisorsSum = n.GetAllDivisors().Sum();
+                if (divisorsSum > n)
+                    value = NumberAbundancy.Abundant;
+                else if (divisorsSum == n)
+                    value = NumberAbundancy.Perfect;
+                else
+                    value = NumberAbundancy.Deficient;
+
+                abundancyCache[n] = value;
+            }
+
+            return abundancyCache[n];
+        }
+
         public static BigInteger ToPower(this int n, int power)
         {
             var result = new BigInteger(n);

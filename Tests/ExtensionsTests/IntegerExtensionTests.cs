@@ -71,5 +71,21 @@ namespace Tests.ExtensionsTests
             for (int i = 0; i < expected.Length; i++)
                 Assert.AreEqual(expected[i], actual[i]);
         }
+
+        [TestMethod]
+        public void TestGetAbundancy()
+        {
+            var expected = NumberAbundancy.Abundant;
+            var actual = 12.GetAbundancy();
+            Assert.AreEqual(expected, actual);
+
+            expected = NumberAbundancy.Perfect;
+            actual = 28.GetAbundancy();
+            Assert.AreEqual(expected, actual);
+
+            expected = NumberAbundancy.Deficient;
+            actual = 2.GetAbundancy();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
