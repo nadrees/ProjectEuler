@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Lib.Extensions;
 
 namespace _022
 {
@@ -27,12 +28,7 @@ namespace _022
                         .ToArray()
                         .Select((name, index) =>
                         {
-                            int sum = 0;
-                            for (int j = 0; j < name.Length; j++)
-                            {
-                                var letter = name.Substring(j, 1);
-                                sum += (alphabet.IndexOf(letter) + 1);
-                            }
+                            int sum = name.GetAlphabetScore();
                             return sum * ((long)(index + 1));
                         })
                         .Sum();

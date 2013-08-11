@@ -8,6 +8,18 @@ namespace Lib.Extensions
 {
     public static class StringExtensions
     {
+        private static String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        public static int GetAlphabetScore(this String s)
+        {
+            int sum = 0;
+            for (int j = 0; j < s.Length; j++)
+            {
+                var letter = s.Substring(j, 1);
+                sum += (alphabet.IndexOf(letter) + 1);
+            }
+            return sum;
+        }
+
         public static IEnumerable<String> GeneratePermutations(this String s)
         {
             if (s == null || s.Length == 0)

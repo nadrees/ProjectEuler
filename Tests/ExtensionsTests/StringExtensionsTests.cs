@@ -40,5 +40,17 @@ namespace Tests.ExtensionsTests
             foreach (var permutation in actual)
                 Assert.IsTrue(expected.Contains(permutation));
         }
+
+        [TestMethod]
+        public void TestGetAlphabetScore()
+        {
+            var expected = 53;
+            var actual = "COLIN".GetAlphabetScore();
+            Assert.AreEqual(expected, actual);
+
+            expected = 55;
+            actual = "SKY".GetAlphabetScore();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
