@@ -18,8 +18,6 @@ namespace _022
     /// </summary>
     class Program
     {
-        private static String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
         static void Main(string[] args)
         {
             var names = (from l in File.ReadAllText(@"names.txt").Split(',')

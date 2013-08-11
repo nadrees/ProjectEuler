@@ -22,5 +22,53 @@ namespace Tests
             for (int i = 0; i < expected.Length; i++)
                 Assert.AreEqual(expected[i], (int)triangeNumbers[i]);
         }
+
+        [TestMethod]
+        public void TestTriangleNthNumber()
+        {
+            var expected = 40755;
+            var actual = TriangleNumberGenerator.NthNumber(285);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestPentagonalNumberGenerator()
+        {
+            var expected = new[] { 1, 5, 12, 22, 35 };
+            var actual = PentagonalNumberGenerator.Generate().Take(5).ToArray();
+
+            Assert.AreEqual(expected.Length, actual.Length);
+
+            for (int i = 0; i < expected.Length; i++)
+                Assert.AreEqual(expected[i], actual[i]);
+        }
+
+        [TestMethod]
+        public void TestPentagonalNthNumber()
+        {
+            var expected = 40755;
+            var actual = PentagonalNumberGenerator.NthNumber(165);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestHexagonalNumberGenerator()
+        {
+            var expected = new[] { 1, 6, 15, 28, 45 };
+            var actual = HexagonalNumberGenerator.Generate().Take(5).ToArray();
+
+            Assert.AreEqual(expected.Length, actual.Length);
+
+            for (int i = 0; i < expected.Length; i++)
+                Assert.AreEqual(expected[i], actual[i]);
+        }
+
+        [TestMethod]
+        public void TestHexagonalNthNumber()
+        {
+            var expected = 40755;
+            var actual = HexagonalNumberGenerator.NthNumber(143);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

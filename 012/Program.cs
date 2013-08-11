@@ -34,7 +34,7 @@ namespace _012
             var triangleNumbers = TriangleNumberGenerator.Generate()
                 .Select(l => 
                 {
-                    var numberOfFactors = l.Factorize().Count();
+                    var numberOfFactors = long.Parse(l.ToString()).Factorize().Count();
                     Console.WriteLine(String.Format("{0} {1}", l, numberOfFactors));
 
                     return new

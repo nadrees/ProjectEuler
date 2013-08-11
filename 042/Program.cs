@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Lib.Extensions;
 using Lib;
+using System.Numerics;
 
 namespace _042
 {
@@ -33,7 +34,7 @@ namespace _042
             Console.ReadKey();
         }
 
-        private static IEnumerable<long> triangleNums = new List<long>();
+        private static IEnumerable<BigInteger> triangleNums = new List<BigInteger>();
         private static bool IsTriangleNumber(int s)
         {
             if (triangleNums.Count() == 0 || triangleNums.Max() < s)
