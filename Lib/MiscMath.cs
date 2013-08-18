@@ -10,6 +10,27 @@ namespace Lib
 {
     public static class MiscMath
     {
+        public static IEnumerable<long[]> GeneratePythagoreanTriples()
+        {
+            for (int n = 2; n < int.MaxValue; n++)
+            {
+                for (int m = 1; m < n; m++)
+                {
+                    yield return GetPythagoreanTriple(n, m);
+                }
+            }
+        }
+
+        public static long[] GetPythagoreanTriple(int n, int m)
+        {
+            return new long[] 
+            { 
+                (n * n) - (m * m), // a
+                2 * n * m,  // b
+                (n * n) + (m * m) // c
+            };
+        }
+
         public static long NumberOfFactors(long l)
         {
             // if n = a^x * b^y * c^z where a, b, c are prime divisors and x, y, z are the number of times those divisors are needed, then

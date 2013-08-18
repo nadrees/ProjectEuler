@@ -31,5 +31,30 @@ namespace Tests
             foreach (var a in actual)
                 Assert.IsTrue(expected.Contains(a));
         }
+
+        [TestMethod]
+        public void TestGeneratePythagoreanTriplets()
+        {
+            var expected = new long[][]
+            {
+                new long[] { 3, 4, 5 },
+                new long[] { 8, 6, 10 },
+                new long[] { 5, 12, 13 }
+            };
+            var actual = MiscMath.GeneratePythagoreanTriples().Take(3).ToArray();
+
+            Assert.AreEqual(expected.Length, actual.Length);
+
+            for (int i = 0; i < 3; i++)
+            {
+                var expectedTriplet = expected[i];
+                var actualTriplet = actual[i];
+
+                Assert.AreEqual(expectedTriplet.Length, actualTriplet.Length);
+
+                for (int j = 0; j < 3; j++)
+                    Assert.AreEqual(expectedTriplet[i], actualTriplet[i]);
+            }
+        }
     }
 }
