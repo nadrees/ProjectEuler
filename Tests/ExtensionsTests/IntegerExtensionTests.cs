@@ -111,5 +111,13 @@ namespace Tests.ExtensionsTests
             actual = 59.ToBase(5);
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void TestChoose()
+        {
+            var expected = 10;
+            var actual = 5.Choose(3);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

@@ -44,6 +44,13 @@ namespace Lib.Extensions
             return result;
         }
 
+        public static BigInteger Choose(this int n, int r)
+        {
+            var numerator = n.Factorial();
+            var denominator = r.Factorial() * (n - r).Factorial();
+            return numerator / denominator;
+        }
+
         public static BigInteger Factorial(this int n)
         {
             var start = new BigInteger(1);
