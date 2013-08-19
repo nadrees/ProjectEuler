@@ -60,7 +60,7 @@ namespace Lib.Extensions
             return s.Substring(1) + firstChar;
         }
 
-        public static bool IsPandigital(this String s)
+        public static bool IsPandigital(this String s, int nary = 9)
         {
             if (s == null)
                 return false;
@@ -124,7 +124,41 @@ namespace Lib.Extensions
                 }
             }
 
-            return oneUsed && twoUsed && threeUsed && fourUsed && fiveUsed && sixUsed && sevenUsed && eightUsed && nineUsed;
+            bool isPandigital = true;
+            for (int i = 1; i <= nary; i++)
+            {
+                switch (i)
+                {
+                    case 1:
+                        isPandigital &= oneUsed;
+                        break;
+                    case 2:
+                        isPandigital &= twoUsed;
+                        break;
+                    case 3:
+                        isPandigital &= threeUsed;
+                        break;
+                    case 4:
+                        isPandigital &= fourUsed;
+                        break;
+                    case 5:
+                        isPandigital &= fiveUsed;
+                        break;
+                    case 6:
+                        isPandigital &= sixUsed;
+                        break;
+                    case 7:
+                        isPandigital &= sevenUsed;
+                        break;
+                    case 8:
+                        isPandigital &= eightUsed;
+                        break;
+                    case 9:
+                        isPandigital &= nineUsed;
+                        break;
+                }
+            }
+            return isPandigital;
         }
     }
 }
