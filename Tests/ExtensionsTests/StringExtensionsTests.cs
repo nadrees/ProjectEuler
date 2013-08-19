@@ -52,5 +52,17 @@ namespace Tests.ExtensionsTests
             actual = "SKY".GetAlphabetScore();
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void TestGetDigits()
+        {
+            var expected = new[] { 5, 3 };
+            var actual = "53".GetDigits();
+
+            Assert.AreEqual(expected.Length, actual.Length);
+
+            for (int i = 0; i < expected.Length; i++)
+                Assert.AreEqual(expected[i], actual[i]);
+        }
     }
 }

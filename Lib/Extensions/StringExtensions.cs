@@ -44,6 +44,14 @@ namespace Lib.Extensions
             return new String(s.ToLower().Reverse().ToArray()) == s.ToLower();
         }
 
+        public static int[] GetDigits(this String s)
+        {
+            int[] digits = new int[s.Length];
+            for (int i = 0; i < digits.Length; i++)
+                digits[i] = s.ParseDigit(i);
+            return digits;
+        }
+
         public static int ParseDigit(this String s, int position)
         {
             return int.Parse(new String(new[] { s[position] }));
