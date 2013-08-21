@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Lib.Extensions;
 using System.Diagnostics;
+using Lib.PrimeNumbers;
 
 namespace _047
 {
@@ -26,29 +27,45 @@ namespace _047
     {
         static void Main(string[] args)
         {
-            var stopwatch = Stopwatch.StartNew();
+            int upperBound = 1000000;
+            int[] nums = new int[upperBound];
 
-            Parallel.ForEach(Enumerable.Range(1000, 1000000),
-                (n, loopState) =>
+            var primes = new SievePrimeNumberGenerator().GetPrimesBelowIntMaxValue().TakeWhile(p => p <= upperBound);
+
+            // for each multiple of a prime, increment it's count by 1 (we found another prime divisor of it)
+            foreach (var prime in primes)
+            {
+                var num = prime + prime;
+                while (num < nums.Length)
                 {
-                    if (n % 1000 == 0)
-                        Console.WriteLine("{0} - {1}", stopwatch.Elapsed, n);
-
-                    for (int i = 0; i < 4; i++)
-                    {
-                        var factors = (n + i).PrimeFactorize().Distinct().ToArray();
-
-                        if (factors.Length != 4)
-                            return;
-                    }
-
-                    Console.WriteLine(n);
-
-                    loopState.Break();
+                    nums[num]++;
+                    num += prime;
                 }
-            );
+            }
 
-            stopwatch.Stop();
+            // find the first set of 4 4s
+            int start = 0, count = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] == 4)
+                {
+                    count++;
+                    if (count == 1)
+                        start = i;
+                    else if (count == 4)
+                    {
+                        Console.WriteLine(start);
+                        break;
+                    }
+                }
+                else
+                {
+                    start = 0;
+                    count = 0;
+                }
+            }
+
+
             Console.ReadKey();
         }
     }
