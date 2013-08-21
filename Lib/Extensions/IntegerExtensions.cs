@@ -97,9 +97,9 @@ namespace Lib.Extensions
                    select a;
         }
 
-        public static IEnumerable<int> PrimeFactorize(this int value)
+        public static IEnumerable<int> PrimeFactorize(this int value, bool memoize = false)
         {
-            return ((long)value).PrimeFactorize().Select(i => (int)i);
+            return ((long)value).PrimeFactorize(memoize).Select(i => (int)i);
         }
 
         public static BigInteger SumOfSquares(this int n)

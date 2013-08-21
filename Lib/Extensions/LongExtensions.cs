@@ -11,30 +11,39 @@ namespace Lib.Extensions
     {
         private static IPrimeNumberGenerator generator = new CachedPrimeNumberGenerator(new SievePrimeNumberGenerator());
 
-        public static IEnumerable<long> PrimeFactorize(this long value)
+        public static IEnumerable<long> PrimeFactorize(this long value, bool memoize = false)
         {
-            return PrimeFactorize(value, generator);
+            return PrimeFactorize(value, generator, memoize);
         }
 
-        public static IEnumerable<long> PrimeFactorize(long value, IPrimeNumberGenerator generator)
+        private static Dictionary<long, List<long>> memoizedFactors = new Dictionary<long, List<long>>();
+        public static IEnumerable<long> PrimeFactorize(long value, IPrimeNumberGenerator generator, bool memoize = false)
         {
             var primeFactors = new List<long>();
 
-            if (value >= 2)
+            if (memoize && memoizedFactors.ContainsKey(value))
+                primeFactors = memoizedFactors[value];
+            else
             {
-                foreach (var prime in generator.GetPrimesBelowLongMaxValue())
+                if (value >= 2)
                 {
-                    if (value % prime == 0)
+                    foreach (var prime in generator.GetPrimesBelowLongMaxValue())
                     {
-                        var remainder = value / prime;
+                        if (value % prime == 0)
+                        {
+                            var remainder = value / prime;
 
-                        if (remainder >= 2)
-                            primeFactors = PrimeFactorize(remainder).ToList();
+                            if (remainder >= 2)
+                                primeFactors = PrimeFactorize(remainder, generator, memoize).ToList();
 
-                        primeFactors.Add(prime);
-                        break;
+                            primeFactors.Add(prime);
+                            break;
+                        }
                     }
                 }
+
+                if (memoize)
+                    memoizedFactors.Add(value, primeFactors);
             }
 
             return primeFactors;
