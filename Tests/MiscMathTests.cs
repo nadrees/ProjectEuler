@@ -56,5 +56,19 @@ namespace Tests
                     Assert.AreEqual(expectedTriplet[i], actualTriplet[i]);
             }
         }
+
+        [TestMethod]
+        public void TestIsLychrelNumber()
+        {
+            var expected = false;
+            var actual = MiscMath.IsLynchrelNumber(47);
+
+            Assert.AreEqual(expected, actual);
+
+            expected = true;
+            actual = MiscMath.IsLynchrelNumber(196);
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

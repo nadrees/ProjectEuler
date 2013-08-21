@@ -3,6 +3,7 @@ using Lib.PrimeNumbers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +11,22 @@ namespace Lib
 {
     public static class MiscMath
     {
+        public static bool IsLynchrelNumber(int n)
+        {
+            var num = new BigInteger(n);
+
+            for (int i = 0; i < 50; i++)
+            {
+                var reversed = BigInteger.Parse(new String(num.ToString().Reverse().ToArray()));
+                num += reversed;
+
+                if (num.ToString().IsPalindrome())
+                    return false;
+            }
+
+            return true;
+        }
+
         public static IEnumerable<long[]> GeneratePythagoreanTriples()
         {
             for (int n = 2; n < int.MaxValue; n++)
