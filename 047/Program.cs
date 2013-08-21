@@ -28,35 +28,27 @@ namespace _047
         {
             var stopwatch = Stopwatch.StartNew();
 
-            int startingNum = 0;
-            int count = 0;
-
-            for (int i = 10; i <= int.MaxValue; i++)
-            {
-                var factors = i.PrimeFactorize(memoize: true).Distinct().ToArray();
-
-                if (factors.Length == 4)
+            Parallel.ForEach(Enumerable.Range(1000, 1000000),
+                (n, loopState) =>
                 {
-                    count++;
-                    if (count == 1)
-                        startingNum = i;
-                    else if (count == 4)
-                        break;
-                }
-                else
-                {
-                    count = 0;
-                    startingNum = 0;
+                    if (n % 1000 == 0)
+                        Console.WriteLine("{0} - {1}", stopwatch.Elapsed, n);
 
-                    if (i % 1000 == 0)
+                    for (int i = 0; i < 4; i++)
                     {
-                        Console.WriteLine("{0} - {1}", stopwatch.Elapsed, i);
+                        var factors = (n + i).PrimeFactorize().Distinct().ToArray();
+
+                        if (factors.Length != 4)
+                            return;
                     }
+
+                    Console.WriteLine(n);
+
+                    loopState.Break();
                 }
-            }
+            );
 
             stopwatch.Stop();
-            Console.WriteLine(startingNum);
             Console.ReadKey();
         }
     }

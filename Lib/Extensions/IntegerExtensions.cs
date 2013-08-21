@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lib.PrimeNumbers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -97,9 +98,43 @@ namespace Lib.Extensions
                    select a;
         }
 
-        public static IEnumerable<int> PrimeFactorize(this int value, bool memoize = false)
+        private static CachedPrimeNumberGenerator generator = new CachedPrimeNumberGenerator(new SievePrimeNumberGenerator());
+        private static readonly Object lockObj = new Object();
+        public static IEnumerable<int> PrimeFactorize(this int value)
         {
-            return ((long)value).PrimeFactorize(memoize).Select(i => (int)i);
+            int[] primes;
+
+            lock (lockObj)
+            {
+                primes = generator.GetPrimesBelowIntMaxValue().TakeWhile(p => p <= value).ToArray();
+            }
+
+            return PrimeFactorize(value, primes);
+        }
+
+        private static IEnumerable<int> PrimeFactorize(int value, int[] primes)
+        {
+            if (primes.Contains(value))
+                return new[] { value };
+
+            var primeFactors = new List<int>();
+
+            if (value >= 2)
+            {
+                foreach (var prime in primes)
+                {
+                    while (value % prime == 0)
+                    {
+                        primeFactors.Add(prime);
+                        value /= prime;
+                    }
+
+                    if (value < 2)
+                        break;
+                }
+            }
+
+            return primeFactors;
         }
 
         public static BigInteger SumOfSquares(this int n)
