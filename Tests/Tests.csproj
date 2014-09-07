@@ -66,6 +66,7 @@
     <Compile Include="RightDownLatticeTests.cs" />
     <Compile Include="ShapeNumberGeneratorTests.cs" />
     <Compile Include="PrimeNumbers\SievePrimeNumberGeneratorTests.cs" />
+    <Compile Include="FixedWidthIntegerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\grid.txt">
